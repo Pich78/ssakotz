@@ -6,7 +6,7 @@
 <body>
     <h1>Saint Seiya Awakening - Knights of the Zodiac Calculator</h1>
     <p id="demo"></p>
-    <img src="fish.jpg" />
+    <img src="" id="fish" />
     <script language="javascript">
         class Car {
             constructor(name, year) {
@@ -25,6 +25,15 @@
         let myCar = new Car("Ford", 2014);
         document.getElementById("demo").innerHTML=
         "My car is " + myCar.age(year) + " years old.";
+
+        catchFish();
+
+        async function catchFish() {
+            const response = await fetch('fish.jpg');
+            const blob = await response.blob();
+            document.getElementById('fish').src = URL.createObjectURL(blob);
+        }
+        
        
     </script>    
 
