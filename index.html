@@ -29,10 +29,19 @@
         catchFish();
 
         async function catchFish() {
-            const response = await fetch('fish.jpg');
+            const response = await fetch('/saints/fish.jpg');
             const blob = await response.blob();
             document.getElementById('fish').src = URL.createObjectURL(blob);
         }
+
+        /*
+        async function catchFishData() {
+            const response = await fetch('fishData.JSON');
+            const blob = await response.blob();
+            document.getElementById('fish').src = URL.createObjectURL(blob);
+        }
+        */
+
         
        
     </script>    
