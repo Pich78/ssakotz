@@ -29,7 +29,7 @@
         catchFish();
 
         async function catchFish() {
-            const response = await fetch('/saints/fish.jpg');
+            const response = await fetch('saints/fish.jpg');
             const blob = await response.blob();
             document.getElementById('fish').src = URL.createObjectURL(blob);
         }
