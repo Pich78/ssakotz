@@ -38,7 +38,6 @@
             
             const saintListResponse = await fetch('https://api.github.com/repos/pich78/ssakotz/saints/');
 
-            const saintListResponse = await fetch('saints/');
             const data = await saintListResponse.json();
             let htmlString = '<ul>';
             for (let file of data) {
