@@ -36,10 +36,10 @@
         async function listSaints() {
             //const response = await fetch('https://api.github.com/repos/:user/:repo/contents/');
             
-            const response = await fetch('https://api.github.com/repos/pich78/ssakotz/saints/');
+            const saintListResponse = await fetch('https://api.github.com/repos/pich78/ssakotz/saints/');
 
-            const response = await fetch('saints/');
-            const data = await response.json();
+            const saintListResponse = await fetch('saints/');
+            const data = await saintListResponse.json();
             let htmlString = '<ul>';
             for (let file of data) {
                 htmlString += `<li><a href="${file.path}">${file.name}</a></li>`;
