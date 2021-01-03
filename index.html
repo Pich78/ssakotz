@@ -35,6 +35,9 @@
 
         async function listSaints() {
             //const response = await fetch('https://api.github.com/repos/:user/:repo/contents/');
+            
+            const response = await fetch('https://api.github.com/repos/pich78/ssakotz/saints/');
+
             const response = await fetch('saints/');
             const data = await response.json();
             let htmlString = '<ul>';
