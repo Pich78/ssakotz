@@ -11,18 +11,6 @@
 
     <script language="javascript">
 
-        (async () => {
-            //const response = await fetch('https://api.github.com/repos/:user/:repo/contents/');
-            const response = await fetch('saints/');
-            const data = await response.json();
-            let htmlString = '<ul>';
-            for (let file of data) {
-                htmlString += `<li><a href="${file.path}">${file.name}</a></li>`;
-            }
-            htmlString += '</ul>';
-            document.getElementsByTagName('saints')[0].innerHTML = htmlString;
-        })()
-
         class Car {
             constructor(name, year) {
                 this.name = name;
@@ -41,7 +29,21 @@
         document.getElementById("demo").innerHTML=
         "My car is " + myCar.age(year) + " years old.";
 
+        listSaints();
         catchFish();
+
+
+        async function listSaints() {
+            //const response = await fetch('https://api.github.com/repos/:user/:repo/contents/');
+            const response = await fetch('saints/');
+            const data = await response.json();
+            let htmlString = '<ul>';
+            for (let file of data) {
+                htmlString += `<li><a href="${file.path}">${file.name}</a></li>`;
+            }
+            htmlString += '</ul>';
+            document.getElementsByTagName('saints')[0].innerHTML = htmlString;
+        }   
 
         async function catchFish() {
             const response = await fetch('saints/fish.jpg');
