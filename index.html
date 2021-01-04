@@ -44,7 +44,7 @@
                 htmlString += `<li><a href="${file.path}">${file.name}</a></li>`;
             }
             htmlString += '</ul>';
-            document.getElementsByTagName('saints')[0].innerHTML = htmlString;
+            document.getElementById('saints').innerHTML = htmlString;
         }   
 
         async function catchFish() {
