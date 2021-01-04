@@ -10,8 +10,10 @@ define(function (require) {
 
     //print(messages.getHello());
 
+    var listSaints = require('saint');
+
     listSaints();
-    catchFish();
+    //catchFish();
 
 });
 
