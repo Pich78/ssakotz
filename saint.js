@@ -1,20 +1,22 @@
-class Car {
-    constructor(name, year) {
-        this.name = name;
-        this.year = year;
+class Saint {
+    constructor(currentName, currentHp) {
+        this._name = currentName;
+        this._hp = currentHp;
     }
 
-    age(x) {
-        return x - this.year;
+    name() {
+        return this._name;
+    }
+
+    hp() {
+        return this._hp;
     }
 }
 
-let date = new Date();
-let year = date.getFullYear();
 
-let myCar = new Car("Ford", 2014);
-document.getElementById("demo").innerHTML=
-"My car is " + myCar.age(year) + " years old.";
+let mySaint = new Saint("Fish", 20000);
+document.getElementById("saint").innerHTML=
+"Saint " + mySaint.name() + " has " + mySaint.hp() + "HP points.";
 
 listSaints();
 catchFish();
