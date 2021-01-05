@@ -13,7 +13,7 @@ define(function (require) {
     var listSaints = require('./listsaint');
     //var catchFish = require('./saint')
 
-    const response = await listSaints();
+    listSaints();
     //catchFish();
 
 });
