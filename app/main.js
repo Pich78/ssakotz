@@ -10,11 +10,11 @@ define(function (require) {
 
     //print(messages.getHello());
 
-    var listSaints = require('listsaint');
-    var catchFish = require('saint')
+    var listSaints = require('./listsaint');
+    //var catchFish = require('./saint')
 
-    listSaints();
-    catchFish();
+    const response = await listSaints();
+    //catchFish();
 
 });
 
