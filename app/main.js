@@ -10,11 +10,26 @@ define(function (require) {
 
     //print(messages.getHello());
 
-    var listSaints = require('./listsaint');
+    
     //var catchFish = require('./saint')
 
-    listSaints();
+    var loadListOfSaintsFromDir = require('./loadListOfSaintsFromDir');
+    
+    loadListOfSaintsFromDir().
+    then(saintList => {
+        console.log(saintList);
+        return saintList;
+    }).
+    catch(err => console.error(err));
+
+    //var loadSaint = require('./loadSaint');
+    //loadSaint(data[0].name);
+    
+    
     //catchFish();
+
+    var printHello = require('./printHello');
+    printHello();
 
 });
 
