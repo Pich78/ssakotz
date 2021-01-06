@@ -2,11 +2,11 @@
 <head>
     <meta charset="utf-8">
     <title>Saint Seiya Awakening - Knight of the Zodiac Calculator</title>
-    <script data-main="app" src="lib/require.js"></script>
+    <!-- <script data-main="app" src="lib/require.js"></script> -->
 </head>
 <body>
     <h1>Saint Seiya Awakening - Knights of the Zodiac Calculator</h1>
-    <select id="saints-choice-dropdown" name="saints">
+    <select id="saints-choice-dropdown" name="saints" onchange="saintSelected(this)">
     </select>
     <p id="saint"></p>
     <p id="saints"></p>
@@ -45,15 +45,19 @@
 
                         option = document.createElement('option');
                         option.text = data[i].name;
-                        option.value = data[i].abbreviation;
+                        option.innerHTML = data[i].name;
+                        //option.value = data[i].abbreviation;
+                        option.value = i;
                         dropdown.add(option);
-                        console.log(option);
+                        //console.log(option);
+                        /*
                         fetch('saints/' + data[i].name + '/' + data[0].name + '.jpg')
                         .then(response => response.blob())
                         .then(function(myBlob) {
                             var objectURL = URL.createObjectURL(myBlob);
                             document.getElementById('saintImage').src = objectURL;         
                         });
+                        */
                     }
                 } 
             )
@@ -61,6 +65,21 @@
     .catch(function(err) {  
         console.error('Fetch Error -', err);  
     });
+
+    function saintSelected(choice) {
+        console.log(choice);
+        console.log(choice.value);
+        var choiceName = choice.options[choice.selectedIndex].text;
+        console.log(choiceName);
+        fetch('saints/' + choiceName + '/' + choiceName + '.jpg')
+        .then(response => response.blob())
+        .then(function(myBlob) {
+            var objectURL = URL.createObjectURL(myBlob);
+            document.getElementById('saintImage').src = objectURL;         
+        });
+ 
+
+    }
 
 </script>
 </body>   
