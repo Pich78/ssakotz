@@ -1,29 +1,16 @@
 define(function () {
 
-    return function loadSaint(saint) {
+    return async function loadSaint() {
 
-        console.log("Load Saint Function " + saint);
+        let loadListOfSaintsFromDir = require('./loadListOfSaintsFromDir');
 
-        async_loadSaint(saint);
+        const saintList = await loadListOfSaintsFromDir();
+        console.log(saintList);
 
+        //select first saint
+
+        let firstSaintName = saintList[0].name;
+
+        return firstSaintName;
     }
 });   
-
-async function async_loadSaint(saint){
-
-    console.log("test call loadJSON");
-        
-    const saintListResponse = await fetch('https://api.github.com/repos/Pich78/ssakotz/contents/saints?ref=gh-pages');
-
-    const data = await saintListResponse.json();
-    console.log(data);
-        
-    /*
-    let htmlString = '<ul>';
-    for (let file of data) {
-        htmlString += `<li><a href="${file.path}">${file.name}</a></li>`;
-    }
-    htmlString += '</ul>';
-    document.getElementById('saints').innerHTML = htmlString;
-    */
-}

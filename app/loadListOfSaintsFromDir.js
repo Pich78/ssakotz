@@ -1,36 +1,15 @@
 define(function () {
 
-    return function loadListOfSaintsFromDir() {
+    return async function loadListOfSaintsFromDir() {
 
-        async_loadListOfSaintsFromDir().
-        then(saintList => {
-            console.log(saintList);
-            return saintList;
-        }).
-        catch(err => console.error(err));
+        const saintList = await fetch('https://api.github.com/repos/Pich78/ssakotz/contents/saints?ref=gh-pages');
+        const data = await saintList.json();
+        console.log(data);
+        return data;
 
     }
-});   
+});  
 
-async function async_loadListOfSaintsFromDir(){
-        
-    const saintList = await fetch('https://api.github.com/repos/Pich78/ssakotz/contents/saints?ref=gh-pages');
-
-    const data = await saintList.json();
-    //console.log(data);
-    //console.log(data[0].name);
-    //console.log(data[1].name);
-
-
-    let list = new Object();
-        list[0] = data[0].name;
-        list[1] = data[1].name;
-    return list;
-    
-   /*
-    let first = data[0].name;
-    return first;
-     */
 
     /*
     let htmlString = '<ul>';
@@ -40,4 +19,3 @@ async function async_loadListOfSaintsFromDir(){
     htmlString += '</ul>';
     document.getElementById('saints').innerHTML = htmlString;
     */
-}

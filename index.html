@@ -6,8 +6,48 @@
 </head>
 <body>
     <h1>Saint Seiya Awakening - Knights of the Zodiac Calculator</h1>
+    <select id="saints-choice-dropdown" name="saints">
+    </select>
     <p id="saint"></p>
     <p id="saints"></p>
     <img src="" id="fish" />
+    <script>
+    let dropdown = document.getElementById('saints-choice-dropdown');
+    dropdown.length = 0;
+
+    let defaultOption = document.createElement('option');
+    defaultOption.text = 'Choose Saint';
+
+    dropdown.add(defaultOption);
+    dropdown.selectedIndex = 0;
+
+    const url = 'https://api.github.com/repos/Pich78/ssakotz/contents/saints?ref=gh-pages';
+
+    fetch(url)  
+    .then(  
+        function(response) {  
+        if (response.status !== 200) {  
+            console.warn('Looks like there was a problem. Status Code: ' + 
+            response.status);  
+            return;  
+        }
+
+        // Examine the text in the response  
+        response.json().then(function(data) {  
+            let option;
+        
+            for (let i = 0; i < data.length; i++) {
+            option = document.createElement('option');
+            option.text = data[i].name;
+            option.value = data[i].abbreviation;
+            dropdown.add(option);
+            }    
+        });  
+        }  
+    )  
+    .catch(function(err) {  
+        console.error('Fetch Error -', err);  
+    });
+</script>
 </body>   
 </html>
